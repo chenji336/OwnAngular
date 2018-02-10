@@ -1,0 +1,47 @@
+module.exports=function(grunt){{
+	grunt.initConfig({
+		jshint:{
+			all:['src/**/*.js','test/**/*.js'],
+			options:{
+				globals:{
+					_:false,
+					$:false,
+					jasmine:false,
+					describe:false,
+					it:false,
+					expect:false,
+					beforeEach:false,
+					afterEach:false,
+					sinon:false,
+				},
+				browser:true,
+				devel:true
+			}
+		},
+		testem:{
+			unit:{
+				options:{
+					framework:'jasmine2',
+					lauch_in_dev:['PhantomJS'],
+					before_tests:'grunt jshint',
+					serve_files:[
+					'node_modules/.4.17.4@lodash/lodash.js',
+					'node_modules/.3.2.1@jquery/dist/jquery.js',
+					'node_modules/.2.1.0@sinon/pkg/sinon.js',
+					'src/**/*.js',
+					'test/**/*.js'
+					],
+					watch_files:[
+					'src/**/*.js',
+					'test/**/*.js'
+					]
+				}
+			}
+		}
+	});
+
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-testem');
+	// 这样就简化了，让grunt的默认参数是testem:run:unit
+	grunt.registerTask('default',['testem:run:unit']);
+}}

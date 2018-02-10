@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="angular.js"></script>
+	<title>expression safe</title>
+	<script type="text/javascript">
+		
+		angular.module('exampleApp',[])
+		.controller('defaultCtrl',function($scope,$log,$window){
+			window.a=1;
+			// window会被转成$window
+			$scope.wnd=window;
+			$scope.wnd2=$window;
+
+			$scope.name = 'World';
+			$scope.fnAlert=function(){
+				console.log('start fnAlert');
+				window.alert($scope.name);
+			}
+
+			$scope.ob={};
+		})
+		;
+		
+	</script>
+</head>
+<body ng-app='exampleApp'>
+	<div ng-controller='defaultCtrl'>
+	<span>{{wnd}}</span>
+	<span>{{wnd2}}</span>
+	<!-- 下面这个就是表达式安全方面的限制，还有很多个是不能再表达式中出现的 -->
+	<span>{{ob.__proto__}}</span>
+	<button ng-click='fnAlert()'>点击我</button>
+	</div>
+</body>
+</html>

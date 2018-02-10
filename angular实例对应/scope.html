@@ -1,0 +1,44 @@
+<!-- 总结
+双向绑定优缺点：有点当然是操作方便
+缺点：每次使用双向绑定就会默认的添加一个$watch进行检测,太多的话性能消耗太大了
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="angular.js"></script>
+	<title></title>
+	<script type="text/javascript">
+		
+		angular.module('exampleApp',[])
+		.controller('defaultCtrl',function($scope,$log){
+			
+			$scope.aValue=1;
+			$scope.bValue=1;
+			// $scope.aArray=[1,2];
+
+			// $scope.$watch('aValue',function(){
+			// 	$log.log($scope.aValue);
+			// });
+
+			// $scope.$watch('aArray',function(){
+			// 	 $log.log($scope.aArray.length);
+			// });
+
+			// $scope.$watchGroup(['aArray','aValue'],function(newValue,oldValue){
+			// 	console.log(newValue,oldValue);
+			// 	 $log.log($scope.aArray.length+"--"+$scope.aValue);
+			// });
+
+		})
+		;
+		
+	</script>
+</head>
+<body ng-app='exampleApp'>
+	<div ng-controller='defaultCtrl'>
+	<span>{{aValue}}</span>
+	<span>{{bValue}}</span>
+
+	</div>
+</body>
+</html>

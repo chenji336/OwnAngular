@@ -1,0 +1,3 @@
+1.调试框架的npm命令:
+grunt testem:run:unit
+2.可以看看这个http://blog.csdn.net/dm_vincent/article/details/51620193中文的，很有帮助，也是讲AngularJS源码分析的

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	(function(){
+		console.log('main start');
+		setTimeout(function(){
+			console.log('main defer');
+		},0);
+
+		function subFn(){
+			console.log('subFn start');
+			setTimeout(function(){
+				console.log('subFn defer');
+			},0);
+		}
+
+		subFn();
+		console.log('main end');
+	})();
+</script>
+</body>
+</html>
